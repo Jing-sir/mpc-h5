@@ -28,9 +28,10 @@
 
 <style scoped lang="scss">
 .article-wrap {
-  margin-top: 16px;
-  padding:  0 10px;
+  margin-top: 12px;
+  padding: 0 12px;
   border-bottom: 1px solid #B3B3B3;
+  box-sizing: border-box;
 
   .title {
     color: var(--van-primary-color);

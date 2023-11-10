@@ -29,8 +29,8 @@
 
 <style scoped lang="scss">
 .article-wrap {
-  margin-top: 16px;
-  padding:  0 10px;
+  margin-top: 14px;
+  padding: 0 10px 0 12px;
   border-bottom: 1px solid #B3B3B3;
 
   .title {

@@ -5,10 +5,10 @@
         <div>logo</div>
         <div class="is-flex flex-direction-row align-items-center header-right">
           <van-tabs v-model:active="activeKey">
-            <van-tab title="首页" />
-            <van-tab title="快讯" />
-            <van-tab title="商业" />
-            <van-tab title="专题" />
+            <van-tab title="トップページ" />
+            <van-tab title="速報" />
+            <van-tab title="ビジネス" />
+            <van-tab title="特集" />
           </van-tabs>
           <van-icon class="search-icon" name="search" />
           <van-icon class="menu-icon" name="wap-nav" />
@@ -38,11 +38,10 @@ const activeKey = ref('');
 
 .home-header {
   height: 60px;
-  padding: 0 16px;
+  padding: 0 12px;
   box-sizing: border-box;
 
-  .header-right {
-  }
+  .header-right {}
 
   .search-icon, .menu-icon {
     margin-left: 4px;

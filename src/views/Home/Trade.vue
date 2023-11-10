@@ -73,7 +73,7 @@ onUnmounted(() => {
     margin-top: 10px;
     padding-bottom: 10px;
     box-sizing: border-box;
-    border-bottom: 1px solid #B3B3B3;
+    border-bottom: 1px solid #dcdee0c4;
 
     .item-img {
       width: 108px;
