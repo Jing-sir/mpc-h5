@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <ConfigProvider>
-      <header class="is-flex justify-content-space-between align-items-center home-header">
+      <header :class="['is-flex justify-content-space-between align-items-center home-header', scrollTop > 10 && 'active']">
         <div>logo</div>
         <div class="is-flex flex-direction-row align-items-center header-right">
           <div class="tab-wrap">
@@ -24,17 +24,32 @@
           <van-icon class="menu-icon" name="wap-nav" />
         </div>
       </header>
-      <router-view />
+      <div class="router-wrap">
+        <router-view />
+      </div>
     </ConfigProvider>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
+import { debounceFunc } from '@/utils/common';
 import { ConfigProvider } from 'vant';
 
+const scrollTop = ref(0);
 const activeKey = ref('');
 
+const onScroll = debounceFunc((): void => {
+    scrollTop.value = window.scrollY || document.documentElement.scrollTop;
+}, 10);
+
+onMounted(() => {
+    window.addEventListener('scroll', onScroll, true);
+});
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', onScroll, true);
+});
 </script>
 
 <style lang="scss" scoped>
@@ -49,7 +64,19 @@ const activeKey = ref('');
 .home-header {
   height: 60px;
   padding: 0 12px;
+  background: #FFFFFF;
+  position: relative;
+  z-index: 9;
   box-sizing: border-box;
+
+  &.active {
+    right: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    position: sticky;
+    box-shadow: rgba(0, 0, 0, 0.06) 0 3px 3px 1px;
+  }
 
   .header-right {
   }
