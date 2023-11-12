@@ -9,7 +9,7 @@ const routes: RouteRecordRaw[] = [
         children: [
             {
                 path: '',
-                name: 'Home',
+                name: 'home',
                 component: () => import(/* webpackChunkName: "Home" */ '@/views/Home/Index.vue'),
                 meta: { title: '首页', requiresAuth: false },
             }, { // 快讯
@@ -27,6 +27,11 @@ const routes: RouteRecordRaw[] = [
                 name: 'trade-details',
                 component: () => import(/* webpackChunkName: "trade-details" */ '@/views/Trade/Details.vue'),
                 meta: { title: '商业详情', requiresAuth: false },
+            }, { // 商业图表
+                path: '/trade-chart',
+                name: 'trade-chart',
+                component: () => import(/* webpackChunkName: "trade-details" */ '@/views/Trade/Chart.vue'),
+                meta: { title: '商业图表', requiresAuth: false },
             }, { // 专题
                 path: '/topics',
                 name: 'topics',
