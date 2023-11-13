@@ -27,7 +27,12 @@ const onTab = (e: { name: string }): void => {
     router.push(e.name);
 };
 
+const onSearch = (): void => {
+    router.push('/search');
+};
+
 const onRoute = (val: string): void => {
+    showRight.value = false;
     router.push(val);
 };
 
@@ -48,14 +53,14 @@ onUnmounted(() => {
   <div class="main">
     <ConfigProvider>
       <header :class="['is-flex justify-content-space-between align-items-center home-header', scrollTop > 10 && 'active']">
-        <div>logo</div>
+        <div @click.stop="$router.push('/')">logo</div>
         <div class="is-flex flex-direction-row align-items-center header-right">
           <div class="tab-wrap">
             <van-tabs v-model:active="activeKey" @click-tab="onTab">
               <van-tab v-for="(item, i) of routerList" :key="i" :title="item.title" :name="item.path" />
             </van-tabs>
           </div>
-          <van-icon class="search-icon" name="search" />
+          <i class="iconfont icon-sousuo search-icon" @click.stop="onSearch"></i>
           <van-icon class="menu-icon" name="wap-nav" @click.stop="onMenu" />
         </div>
       </header>
@@ -64,19 +69,17 @@ onUnmounted(() => {
       </div>
     </ConfigProvider>
     <van-popup
-        v-model:show="showRight"
-        position="right"
-        :style="{ width: '40%', height: '100%', background: '#000' }"
-    >
-      <div class="popup-wrap">
-        <div
+      v-model:show="showRight"
+      position="right"
+      :style="{ width: '40%', height: '100%', background: '#000' }">
+        <div class="popup-wrap">
+          <div
             v-for="(item, i) of routerList" :key="i" :title="item.title"
             :class="['route-item', $route.name === item.name && 'active']"
-            @click.stop="onRoute(item.path)"
-        >
-          {{ item.title }}
+            @click.stop="onRoute(item.path)">
+              {{ item.title }}
+          </div>
         </div>
-      </div>
     </van-popup>
   </div>
 </template>
@@ -116,6 +119,7 @@ onUnmounted(() => {
 
   .search-icon, .menu-icon {
     margin-left: 4px;
+    font-size: 20px;
   }
 
   .search-icon {

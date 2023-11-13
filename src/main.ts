@@ -1,6 +1,6 @@
 import App from './App.vue';
 import 'amfe-flexible';
-import vant from 'vant';
+import vant, { Lazyload } from 'vant';
 import { createApp } from 'vue';
 import pinia from './store/Index';
 import i18n from './setup/i18n-setup';
@@ -20,6 +20,7 @@ createApp(App)
     .use(pinia)
     .use(router)
     .use(dateFormat)
+    .use(Lazyload, { lazyComponent: true })
     .use(dataThousands)
     .use(numberOperation)
     .mount('#app');
